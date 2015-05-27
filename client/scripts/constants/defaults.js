@@ -20,9 +20,9 @@ var Defaults = {
   messages: {},
 
 	section: {
-		title: "test",
+		title: null,
 		description: null,
-		links: []
+		links: ["www.google.com", "www.facebook.com"]
   }
 };
 
