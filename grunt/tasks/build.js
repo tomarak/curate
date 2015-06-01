@@ -19,8 +19,11 @@ var taskConfig = function(grunt) {
     'usemin',
     'htmlmin:dist',
     'uglify',
-    'clean:tmp'
+    'clean:tmp',
+    'sass:dist',
+    'browserify:dist'
   ]);
+
 };
 
 module.exports = taskConfig;
