@@ -20,9 +20,6 @@ var taskConfig = function(grunt) {
     'htmlmin:dist',
     'uglify',
     'clean:tmp'
-      'env:all',
-      'injector',
-      'wiredep',
       'browserify:dist',
       'sass:dist',
       'autoprefixer:dist'
