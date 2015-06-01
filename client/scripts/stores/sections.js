@@ -28,7 +28,6 @@ var SectionStore = new Store({
 	get: function() {
 		return _sections;
 	},
-
   getGuide: function(){
     return _guide;
   },
@@ -38,81 +37,47 @@ var SectionStore = new Store({
 SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
 	var action = payload.action;
 
+  //modifies the store based on the action type in the payload
   switch(action.actionType){
-    case SET_SECTION:
+    case sectionConstants.SET_SECTION:
       _sections = action.sections;
       SectionStore.emitChange();
       break;
-    case CREATE_NEW_SECTION:
-      var newSection = cloneObj(sectioDefaults.section);
+    case sectionConstants.CREATE_NEW_SECTION:
+      var newSection = cloneObj(sectionDefaults.section);
       _sections.push(newSection);
       SectionStore.emitChange();
       break;
-    case CREATE_NEW_LINK:
+    case sectionConstants.CREATE_NEW_LINK:
       var index = payload.action.index;
       var newLink = cloneObj(sectionDefaults.link);
       _sections[index].links.push(newLink);
       SectionStore.emitChange();
       break;
-    case UPDATE_INPUT_VALUE:
+    case inputConstants.UPDATE_INPUT_VALUE:
       var index = payload.action.index;
-      var val = payload.action.input;
-      var nameProp = payload.action.name;
-      switch(nameProp){
+      var input = payload.action.input;
+      var fieldName = payload.action.name;
+      /*
+      updates the sections/guide object based on the 
+      field name that was modified in the view
+      */
+      switch(fieldName){
         case "links":
-          var keyProp = payload.action.linkidx
-          _sections[index][nameProp][keyProp].link = val;
+          var linkKey = payload.action.linkidx
+          _sections[index][fieldName][linkKey].link = input;
           break;
         case "guideTitle":
         case "guideDescription":
-          _guide[nameProp] = val;
+          _guide[fieldName] = input;
           break;
         default:
-        _sections[index][nameProp] = val;
+        _sections[index][fieldName] = input;
       }
       SectionStore.emitChange();
       break;
   };
-  
 
-	// if (action.actionType === sectionConstants.SET_SECTIONS) {
-
-	// 	_sections = action.sections;
-	// 	SectionStore.emitChange();
-	// }
- //  else if(action.actionType === sectionConstants.CREATE_NEW_SECTION){
- //    console.log('in section store, pushing section');
-
- //    //adds a new section to _sections
- //    var newSection = cloneObj(sectionDefaults.section);
- //    _sections.push(newSection);
- //    SectionStore.emitChange();
- //  }
- //  else if(action.actionType === sectionConstants.CREATE_NEW_LINK){
- //    console.log('in section store, pushing link at index');
- //    //adds a new link to _sections at the index of the section that the add button was clicked
- //    var index = payload.action.index;
- //    var newLink = cloneObj(sectionDefaults.link);
- //    _sections[index].links.push(newLink);
- //    SectionStore.emitChange();
- //  }
- //  else if(action.actionType === inputConstants.UPDATE_INPUT_VALUE){
- //    console.log("in section store, updating form input val");
-
- //    var index = payload.action.index;
- //    var val = payload.action.input;
- //    var nameProp = payload.action.name;
-
- //    if(nameProp === "links"){
- //      var keyProp = payload.action.linkidx
- //      _sections[index][nameProp][keyProp].link = val;
- //    } else if(nameProp === "guideTitle" || nameProp === "guideDescription"){
- //      _guide[nameProp] = val;
- //    } else{
- //      _sections[index][nameProp]= val;
- //    }
- //    SectionStore.emitChange();
- //  }
 
 });
 
