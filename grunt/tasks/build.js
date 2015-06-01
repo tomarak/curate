@@ -20,9 +20,9 @@ var taskConfig = function(grunt) {
     'htmlmin:dist',
     'uglify',
     'clean:tmp'
-      'browserify:dist',
-      'sass:dist',
-      'autoprefixer:dist'
+    'browserify:dist',
+    'sass:dist',
+    'autoprefixer:dist'
   ]);
 };
 
