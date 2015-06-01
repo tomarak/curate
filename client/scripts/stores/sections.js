@@ -9,13 +9,19 @@ var inputConstants = require('../constants/input');
 var _sections = [];
 var _guide = sectionDefaults.guide;
 
+/* 
+returns a new copy of the object, used whenever 
+we need to push a copy of a data structure into _sections
+*/
 var cloneObj = function(obj){
-  //returns a new copy of the object, used whenever we need to push a copy of a data structure into _sections
   return JSON.parse(JSON.stringify(obj));
 };
 
 var SectionStore = new Store({
-  //starts the _sections repository with a section and a link
+  /* 
+  starts the _sections repository with a section and a link,
+  used on initialization of view
+  */
   init: function(){
     var newSection = cloneObj(sectionDefaults.section);
     var newLink = cloneObj(sectionDefaults.link);
