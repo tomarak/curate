@@ -7,27 +7,26 @@
 var taskConfig = function(grunt) {
   grunt.registerTask('build', 'Build a production ready version of your site.', [
     'clean:dist',
-    'env:dev',
-    
-    'express:dist'
-    
+    'env:prod',
+    'injector',
+    'wiredep',
     'copy:dist',
     'concurrent',
     'useminPrepare',
     'concat:generated',
     'cssmin',
-    
+    'autoprefixer:dist',
     'usemin',
     'htmlmin:dist',
     'uglify',
-    'clean:tmp',
-    'injector',
-'wiredep',
-    'browserify:dist'
-    'sass:dist',
-  'autoprefixer:dist'
+    'clean:tmp'
+      'env:all',
+      'injector',
+      'wiredep',
+      'browserify:dist',
+      'sass:dist',
+      'autoprefixer:dist'
   ]);
-
 };
 
 module.exports = taskConfig;
