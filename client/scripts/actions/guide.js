@@ -181,6 +181,7 @@ module.exports = {
 		cb.options = {
 			successUrl: '/',
 			errorUrl: '/'
+			destination:'/guide'
 		};
 		this.getReq(id, cb);
 	},
@@ -193,6 +194,7 @@ module.exports = {
 		cb.options = {
 			successUrl: '/',
 			errorUrl: '/'
+			destination: '/guide/single'
 		};
 		this.getReq(id, cb);
 	}
@@ -201,12 +203,14 @@ module.exports = {
 		var self = this;
 		var token = self.getToken();
 		var options = callback.options || {};
+		var id = idx || ""
 
 		request
-			.get('/guide/'+idx)
+			.get(options.destination)
 			.set({
 				'authorization': 'Bearer ' + token,
-				'X-Requested-With': 'XMLHttpRequest'
+				'X-Requested-With': 'XMLHttpRequest',
+				'id': id
 			})
 			//.send(idx)
 			.end(function(res) {
