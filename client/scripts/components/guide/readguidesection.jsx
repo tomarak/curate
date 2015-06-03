@@ -43,7 +43,6 @@ var ReadGuideSectionComponent = React.createClass({
         {section.description}
         </li>
 
-        
        <li> <label>Links: </label></li>
         {linkList}
         
