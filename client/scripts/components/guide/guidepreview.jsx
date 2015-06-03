@@ -28,7 +28,11 @@ var GuidePreviewComponent = React.createClass({
   handleClick: function(e){
     var id = this.props.guide.id;
     console.log('selected guide id', id);
+<<<<<<< HEAD
     guideActions.passGuideId(id);
+=======
+
+>>>>>>> (feat) Create readGuide component
     routeActions.setRoute('/readguide');
   }
 });

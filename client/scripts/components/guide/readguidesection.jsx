@@ -14,9 +14,12 @@ var ReadGuideSectionComponent = React.createClass({
       /* jshint ignore:start */
       link.votes = link.votes || 0;
       return(
-        <div key={idx}>
+
+        <div>
        <li>{link.title}</li>
-       <li>{link.url}</li>
+       <li>{link.link}</li>
+       <VoteComponent key={idx} sectionIndex={this.props.index} linkIndex={idx} votes={link.votes}/>
+
        </div>
         )
        //   Add back VoteComponent to linkList once fixed

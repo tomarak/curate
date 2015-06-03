@@ -41,7 +41,11 @@ module.exports = {
 	},
 
 	passGuideId: function(id) {
+<<<<<<< HEAD
 		Dispatcher.handleViewAction({
+=======
+		Displatcher.handleViewAction({
+>>>>>>> (feat) Create readGuide component
 			actionType: guideConstants.PASS_ID,
 			id: id
 		});
@@ -209,7 +213,10 @@ module.exports = {
 		// ;
 		var callback = {options: {destination: null}};
 		callback.options.destination = '/guide/single';
+<<<<<<< HEAD
 		console.log('in actions/guide getGuide id:', id);
+=======
+>>>>>>> (feat) Create readGuide component
 		this.getReq(id, callback);
 	},
 
