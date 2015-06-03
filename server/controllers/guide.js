@@ -75,7 +75,9 @@ var readUserGuides = function (req, res, next) {
  */
 var readIndividualGuide = function (req, res, next) {
   var individualGuide = {};
-  var guideId = 1; // TODO: eventually needs to be req.body.guideId
+  console.log('req header', req.headers);
+  var guideId = req.headers.id; // TODO: eventually needs to be req.body.guideId
+  console.log('read indiv guide, guide id', guideId);
 
   Guide.find({
     where: {
@@ -124,7 +126,7 @@ var readIndividualGuide = function (req, res, next) {
             currentLink.title = link.title;
             currentLink.url = link.url;
             currentLink.votes = 0;
-            
+
             LinkVote.findAll({ // find all linkVotes of the link
               where: {
                 linkId: link.id
@@ -164,7 +166,7 @@ var readIndividualGuide = function (req, res, next) {
     .then(function() {
       // Find category associated with guide.
       // May want to refactor to allow for multiple categories later
-      Category.find({ 
+      Category.find({
         where: {
           id: guide.categoryId
         }
@@ -200,7 +202,7 @@ var readIndividualGuide = function (req, res, next) {
       })
       .then(function(comments) {
         var currentComment = {};
-        
+
         for (var i = 0; i < comments.length; i++) {
           currentComment.message = comments[i].message;
           // currentComment.userName = comments[i].userName;
@@ -249,7 +251,7 @@ var createGuide = function(req, res, next) {
     votes: null, //will be populated in read state
     comments: null //will be populated in read state
   };
-  
+
   console.log('createGuide controller POST req.body', req.body);
   guideContract = req.body;
 
