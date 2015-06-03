@@ -11,8 +11,8 @@ var ReadGuideComponent = React.createClass({
   getInitialState: function () {
 
     var dummyObj = {
-      title: "test title",
-      description: "blah",
+      title: 'test title',
+      description: 'blah',
       sections: [],
       userId: 1,
       userEmail: 'ankuto@gmail.com',
@@ -44,7 +44,10 @@ var ReadGuideComponent = React.createClass({
     });
   },
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> (feat) Build specific read guide component
 	render: function() {
     var guide = this.state.guide;
     var sections = guide.sections.map(function(sec, idx){

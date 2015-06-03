@@ -75,7 +75,13 @@ var readUserGuides = function (req, res, next) {
  */
 var readIndividualGuide = function (req, res, next) {
   var individualGuide = {};
+<<<<<<< HEAD
   var guideId = req.headers.id;
+=======
+  console.log('req header', req.headers);
+  var guideId = req.headers.id; // TODO: eventually needs to be req.body.guideId
+  console.log('read indiv guide, guide id', guideId);
+>>>>>>> (feat) Build specific read guide component
 
   Guide.find({
     where: {

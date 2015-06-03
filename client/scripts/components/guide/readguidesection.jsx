@@ -18,7 +18,6 @@ var ReadGuideSectionComponent = React.createClass({
         <div>
        <li>{link.title}</li>
        <li>{link.link}</li>
-       <VoteComponent key={idx} sectionIndex={this.props.index} linkIndex={idx} votes={link.votes}/>
 
        </div>
         )
