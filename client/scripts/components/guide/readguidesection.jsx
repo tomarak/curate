@@ -10,9 +10,11 @@ var ReadGuideSectionComponent = React.createClass({
     var section = this.props.sec;
     console.log('in readguidesection.jsx section:', section);
     var self = this;
+
     var linkList = section.links.map(function(link, idx){
+      console.log('LINKS: ', link);
       /* jshint ignore:start */
-      link.votes = link.votes || 0;
+     
       return(
 
         <div>
@@ -22,6 +24,7 @@ var ReadGuideSectionComponent = React.createClass({
        </div>
         )
        //   Add back VoteComponent to linkList once fixed
+       // link.votes = link.votes || 0;
        //  <VoteComponent key={idx} sectionIndex={this.props.index} linkIndex={idx} votes={link.votes}/>
       /* jshint ignore:end */
     });
@@ -40,10 +43,10 @@ var ReadGuideSectionComponent = React.createClass({
         {section.description}
         </li>
 
-        <li>
-        <label>Links: </label>
+        
+       <li> <label>Links: </label></li>
         {linkList}
-        </li>
+        
       </ul>
     </div>
     /* jshint ignore:end */
