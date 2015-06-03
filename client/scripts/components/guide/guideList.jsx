@@ -32,15 +32,19 @@ var GuideListComponent = React.createClass({
 	render: function() {
 		var self = this;
 		if (this.state.guides) {
-			var guideList = this.state.guides.sort(function (a, b) {
-				return b.votes - a.votes;
-			}).map(function (guide, idx) {
-				return (
-					/* jshint ignore:start */
-					<GuidePreview key={idx} guide={guide}/>
-					/* jshint ignore:end */
-				);
-			});
+
+		var guideList = this.state.guides.sort(function (a, b) {
+			return b.votes - a.votes;
+		}).map(function (guide, idx) {
+			console.log('GUIDE', guide)
+			return (
+				/* jshint ignore:start */
+				<GuidePreview key={idx} guideId={guide} guide={guide}/>
+				/* jshint ignore:end */
+			)
+
+		});
+
 		}
 
 		return (
